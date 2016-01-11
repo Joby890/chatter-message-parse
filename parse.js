@@ -2,12 +2,10 @@ export default function(chatter) {
 
 
   this.onEnable = function() {
-    console.log(URI)
     chatter.pluginManager.registerEvent(this, "MessageShowEvent", function(event) {
       try{
         var text = event.message.text;
         var obj = JSON.parse(text);
-        console.log(obj)
         if(obj.type === "img") {
           event.message.text = React.createElement("img", {src: obj.src});
 
@@ -29,7 +27,6 @@ export default function(chatter) {
           last = end;
           return url;
         });
-        console.log(text)
         results.push(text.substring(last, text.length))
         if(found) {
           var end = results.map(function(current) {
